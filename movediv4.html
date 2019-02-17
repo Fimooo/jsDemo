@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=1.0">
+        <style>
+            div{
+                background-color: red;
+                height: 100px;
+                width: 100px;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <title>开始和停止缓冲运动div</title>
+    <body>
+        <input value="move" id="moveBtn" type="button"/>
+        <input value="stop" id="stopBtn" type="button"/>
+        <div id="div1"></div>
+    </body>
+    <script>
+        window.onload=function(){
+            var mbtn = document.getElementById("moveBtn");
+            var sbtn = document.getElementById("stopBtn");
+            var div = document.getElementById("div1");
+            var movetimer = null;
+            var stoptimer = null;
+            var speed = 10;
+            var stopspeed =10;
+            var clickflag = true;
+            mbtn.onclick=function(){
+                clearInterval(movetimer);         //防止多次点击，多个setinterval加快物体速度       
+                movetimer = setInterval(function(){
+                    div.style.left = div.offsetLeft + speed + "px";
+                },50);
+            }
+            sbtn.onclick=function(){
+                clearInterval(movetimer);
+                stoptimer = setInterval(function(){
+                    stopspeed = Math.floor(stopspeed/8);
+                    div.style.left = div.offsetLeft + stopspeed + "px";
+                    if(stopspeed == 0){
+                        clearInterval(stoptimer);
+                    }
+                },50)
+            }
+        }
+    </script>
+</html>

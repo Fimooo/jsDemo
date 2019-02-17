@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initeial-scale=1.0,maximum=1.0,user-scalable=0">
+    <style>
+        div {
+            height: 20px;
+            width: 20px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<title>mousefollow</title>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script>
+    window.onload = function () {
+        var div = document.getElementsByTagName("div");
+        document.onmousemove=function(event){
+            for (let i = div.length - 1; i > 0; i--) {
+                div[i].style.left = div[i - 1].style.left;   //offset取的是自身宽度，永远是一个固定值，所以不会运动起来，故要用style.left，叠加left之后，left会变，营造运动效果
+                div[i].style.top = div[i - 1].style.top;
+            }
+            div[0].style.left = event.clientX + "px";
+            div[0].style.top = event.clientY + "px";
+        }
+    }
+</script>
+
+</html>

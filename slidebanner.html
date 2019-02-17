@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=1.0">
+    <style>
+        .div-content {
+            position: absolute;
+            left: -100px;
+            background-color: #999;
+            height: 100px;
+            width: 100px;
+        }
+
+        .div-banner {
+            background-color: red;
+            position: absolute;
+            left: 0px;
+        }
+
+        #div1 {
+            position: absolute;
+            align-content: center;
+        }
+    </style>
+</head>
+<title>开始和停止缓冲运动div</title>
+
+<body style="height: 2000px;">
+    <div id="div1">
+        <div class="div-content" id="content">
+            content
+        </div>
+        <div class="div-banner" id="banner">
+            侧边栏
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var cont = document.getElementById("content");
+        var ban = document.getElementById("banner");
+        var div = document.getElementById("div1");
+        var timer = null;
+        function setMove(end, speed) {   
+            clearInterval(timer);
+            timer = setInterval(function () {
+                if (cont.offsetLeft == end) {
+                    clearInterval(timer);
+                } else {
+                    cont.style.left = cont.offsetLeft + speed + "px";
+                    ban.style.left = ban.offsetLeft + speed + "px";
+                }
+            }, 10);
+        }
+
+        ban.onmousemove =function(){
+            setMove(0,10);
+        } 
+        cont.onmousemove =function(){
+            setMove(0,10);
+        } 
+
+         ban.onmouseout =function(){
+            setMove(-100,-10);
+        } 
+        cont.onmouseout =function(){
+            setMove(-100,-10);
+        }
+        
+        window.onscroll = function (event) {
+            div.style.left = 0 + "px";
+            var disy = parseInt((document.documentElement.clientHeight - div.offsetHeight) / 2);
+            div.style.top = document.documentElement.scrollTop + disy + "px";
+        }
+
+// <!-- 未优化前
+//         ban.onmousemove = function () {
+//             clearInterval(timer);
+//             timer = setInterval(function () {
+//                 if (cont.offsetLeft == 0) {
+//                     clearInterval(timer);
+//                 } else {
+//                     cont.style.left = cont.offsetLeft + 10 + "px";
+//                     ban.style.left = ban.offsetLeft + 10 + "px";
+//                 }
+//             }, 10);
+//         }
+
+//         cont.onmousemove = function () {
+//             clearInterval(timer);
+//             timer = setInterval(function () {
+//                 if (cont.offsetLeft == 0) {
+//                     clearInterval(timer);
+//                 } else {
+//                     cont.style.left = cont.offsetLeft + 10 + "px";
+//                     ban.style.left = ban.offsetLeft + 10 + "px";
+//                 }
+//             }, 10);
+//         }
+
+//         cont.onmouseout = function () {
+//             clearInterval(timer);
+//             timer = setInterval(function () {
+//                 if (cont.offsetLeft == -100) {
+//                     clearInterval(timer);
+//                 } else {
+//                     cont.style.left = cont.offsetLeft - 10 + "px";
+//                     ban.style.left = ban.offsetLeft - 10 + "px";
+//                 }
+//             }, 10);
+//         }
+//         ban.onmouseout = function () {
+//             clearInterval(timer);
+//             timer = setInterval(function () {
+//                 if (cont.offsetLeft == -100) {
+//                     clearInterval(timer);
+//                 } else {
+//                     cont.style.left = cont.offsetLeft - 10 + "px";
+//                     ban.style.left = ban.offsetLeft - 10 + "px";
+//                 }
+//             }, 10);
+//         } -->
+
+
+    }
+</script>
+
+</html>

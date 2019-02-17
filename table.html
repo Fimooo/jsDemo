@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+<title>table</title>
+<body>
+    <table>
+        <thead>table排序</thead>
+        <tbody id="table">
+        </tbody>
+    </table>
+</body>
+<script>
+    window.onload = function () {
+        let atbody = document.getElementsByTagName("tbody");
+        var table = [];
+        var th0 = ["name", "math", "chinese", "english"]
+        var th1 = ["小明", "91", "43", "60"];
+        var th2 = ["小红", "81", "43", "70"];
+        var th3 = ["小东", "61", "53", "80"];
+        var th4 = ["小沈", "71", "13", "50"];
+        var th5 = ["小绿", "100", "33", "66"];
+        table = [th0, th1, th2, th3, th4, th5];
+        let childnode = document.createElement("tr");
+        childnode.innerHTML += `<th>${table[0][0]}</th><th>${table[0][1]}</th><th>${table[0][2]}</th><th>${table[0][3]}</th>`
+        atbody[0].appendChild(childnode);
+        for (let k = 1; k < 6; k++) {
+            let child = document.createElement("tr");
+            child.innerHTML += `<td>${table[k][0]}</td><td>${table[k][1]}</td><td>${table[k][2]}</td><td>${table[k][3]}</td>`
+            atbody[0].appendChild(child);
+        }
+        var ath = document.getElementsByTagName("th");
+        for (let i = 1; i < 4; i++) {
+            ath[i].onclick = function () {
+                for(var p=0;p<5;p++){
+                    atbody[0].removeChild(atbody[0].childNodes[2]);  //只能删除一个节点，删除后list即时更新
+                }                
+                for (let j = 1; j < 5; j++) {
+                    for (let m = i + 1; m < 6; m++) {
+                        if (table[j][i] > table[m][i]) {
+                            let b = table[j]
+                            table[j] = table[m];
+                            table[m] = b;
+                        }
+                    }
+                }
+                for (let k = 1; k < 6; k++) {
+                    let child = document.createElement("tr");
+                    child.innerHTML += `<td>${table[k][0]}</td><td>${table[k][1]}</td><td>${table[k][2]}</td><td>${table[k][3]}</td>`
+                    atbody[0].appendChild(child);
+                }
+            }
+        }
+    }
+</script>
+</html>

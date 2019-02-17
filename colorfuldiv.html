@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Div多种变幻</title>
+    <style>
+        div {
+            background-color: red;
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div >边宽</div>
+    <div>变长</div>
+    <div>强调一下!!!!</div>
+    <div style="border: 2px solid #000;">加粗一下</div>
+</body>
+<script>
+    window.onload = function () {
+        var div = document.getElementsByTagName("div");
+        
+        div[0].onmousemove=function(){
+            setmove(div[0], "width", 300);
+        }
+
+        div[1].onmousemove=function(){
+            setmove(div[1],"height",300);
+        }
+
+        div[2].onmousemove=function(){
+            setmove(div[2],"font-size",30);
+        }
+
+        div[3].onmousemove=function(){
+            setmove(div[3],"border-width",10);
+        }
+
+        function getStyle(obj, attr) {
+            return obj.currentStyle ?parseInt(obj.currentStyle): parseInt(getComputedStyle(obj)[attr]);
+        }
+        function setmove(obj, attr, target) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var attrvalue = getStyle(obj, attr);
+                var iSpeed = (target - attrvalue) / 8;
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                if (attrvalue == target) {
+                    clearInterval(obj.timer);
+                } else {
+                    var value = attrvalue + iSpeed;
+                    obj.style[attr]=value +'px';
+                }
+            }, 30)
+        }
+
+
+
+
+    }
+
+
+
+
+
+</script>
+
+</html>

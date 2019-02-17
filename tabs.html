@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="">
+    <style>
+        div1 {
+            display: inline;
+            border: 1px solid black;
+        }
+
+        div2 {
+            display: block;
+            border: 1px solid red;
+            display: none;
+        }
+    </style>
+</head>
+<title>Tabs</title>
+
+<body>
+    <div1>1</div1>
+    <div1>2</div1>
+    <div1>3</div1>
+    <div2>1111</div2>
+    <div2>2222</div2>
+    <div2>3333</div2>
+</body>
+<script>
+    window.onload = function () {
+        let adiv1 = document.getElementsByTagName("div1");
+        let adiv2 = document.getElementsByTagName("div2");
+        for (let j = 0; j < adiv1.length; j++) {    //换成let就可以用adiv[j];  let块级作用域，可以构建暂时性死区
+            // adiv1[j].index = j;
+            adiv1[j].index = j + 1;
+            adiv1[j].onclick = function () {
+                console.log(adiv1[j])
+                for (let i = 0; i < adiv2.length; i++) {
+                    adiv2[i].style.display = "none";
+                }
+                if(this.index){
+                    adiv2[this.index - 1].style.display = "block";
+                }
+            }
+        }
+    }
+</script>
+
+</html>

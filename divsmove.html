@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多个div一起发生运动</title>
+</head>
+<style>
+    div {
+        background-color: red;
+        height: 50px;
+        width: 100px;
+        margin-bottom: 10px;
+    }
+</style>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script>
+    window.onload = function () {
+        var div = document.getElementsByTagName("div");
+        function setmove(obj, target) {
+            var j = obj.index;
+            var speed = 10;
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var iSpeed = (target - obj.offsetWidth) / 8;
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                if (obj.offsetWidth == target) {
+                    clearInterval(obj.timer);
+                } else {
+                    obj.style.width = obj.offsetWidth + iSpeed + "px";
+                }
+            }, 30)
+        }
+        for (var i = 0; i < div.length; i++) {
+            div[i].index = i;   //不引入index，因为事件的异步特质，会在i=4后再执行。
+            div[i].timer = null;
+            div[i].onmousemove = function () {
+                setmove(this, 200)
+            }
+            div[i].onmouseout = function () {
+                setmove(this, 100)
+            }
+        }
+    }
+</script>
+</html>
+
+<!-- setInterval(function(){
+    console.log(this)    //指向window
+if(div[this.index].offsetWidth == 300){
+    clearInterval(div[this.index].timer);
+}else{
+    div[this.index].style.width = 300 +"px";
+}
+},30)
+错误     setinterval中的this不再指向当前div -->

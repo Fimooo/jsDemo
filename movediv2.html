@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maxuim">
+        <style>
+            .div-content{
+                position: absolute;
+                left: -100px;
+                background-color: #999;
+                height: 100px;
+                width: 100px;
+            }
+            .div-banner{
+                background-color: red;
+                position: absolute;
+                left:0px;
+            }
+        </style>
+    </head>
+    <title>测边框滑出</title>
+    <body>
+        <div class="div-content" id="content">
+            content
+        </div>
+        <div class="div-banner" id="banner">
+            侧边栏
+        </div>
+    </body>
+    <script>
+        window.onload=function(){
+            var cont = document.getElementById("content");
+            var ban = document.getElementById("banner");
+            ban.onmousemove = function(){
+                cont.style.left = 0 + "px";
+                ban.style.left = 100 + "px";
+            }
+            cont.onmousemove = function(){
+                cont.style.left = 0 + "px";
+                ban.style.left = 100 + "px";
+            }
+            document.addEventListener("mousemove",function(){
+                cont.style.left = -100 + "px";
+                ban.style.left = 0 + "px";
+
+            },true)
+        }
+    </script>
+</html>

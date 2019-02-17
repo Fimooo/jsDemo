@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>渐变式淡入淡出图片</title>
+    <style>
+        img{
+            height:300px;
+            width:400px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="pic1.jpeg" id="pic">
+    </div>
+
+</body>
+<script>
+    window.onload=function(){
+        var img = document.getElementById("pic");
+        var timer = null;
+        var opacity = 30;
+        function setopacity(target,speed){
+             // img.style.opacity = 1;
+             clearInterval(timer)
+            timer = setInterval(function(){
+                if(img.style.opacity == target){
+                    clearInterval(timer);
+                }else{
+                    opacity += speed;
+                    img.style.opacity = opacity/100;
+                }
+            },30)
+        }
+        img.onmousemove=function(){
+            setopacity(1,5)
+            // clearInterval(timer)
+            // timer = setInterval(function(){
+            //     if(img.style.opacity == 1){
+            //         clearInterval(timer);
+            //     }else{
+            //         opacity += 5;
+            //         img.style.opacity = opacity/100;
+            //     }
+            // },30)
+        }
+        img.onmouseout=function(){
+            setopacity(0.3,-5)
+            // clearInterval(timer);
+            // timer = setInterval(function(){
+            //     console.log(img.style.opacity)
+            //     if(img.style.opacity == 0.3){
+            //         clearInterval(timer);
+            //     }else{
+            //         opacity -= 5;
+            //         img.style.opacity = opacity/100;
+            //     }
+            // },30)         
+        }
+    }
+</script>
+</html>

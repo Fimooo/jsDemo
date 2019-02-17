@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style>
+        ul {
+            margin: 0;
+            padding: 0
+        }
+        /* 清除浏览器默认样式，达到右键菜单在鼠标点击区域出现，不会偏差 */
+        ul li {
+            background-color: #999;
+            width: 100px;
+            height: 20px;
+            border: 1px solid black;
+            list-style: none;
+            color: #fff;
+        }
+
+        ul {
+            display: none;
+            position: absolute;
+        }
+        /* 动态设置菜单的定位，position一定要设置成absolute */
+    </style>
+</head>
+
+<body>
+    <ul id="ul">
+        <li>右键</li>
+        <li>菜单</li>
+        <li>自定义</li>
+    </ul>
+</body>
+<script>
+    window.onload = function () {
+        var ul = document.getElementById("ul");
+        // ById取出的元素为一个，其余取元素均为多个的类数组
+        document.oncontextmenu = function (event) {
+            ul.style.display = "block";
+            ul.style.left = event.clientX + "px";
+            ul.style.top = event.clientY + "px";
+            return false;//要在最后写，不然就跳出了函数
+        }
+        document.onclick = function () {
+            ul.style.display = "none";
+        }
+    }
+</script>
+
+</html>

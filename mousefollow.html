@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+        #div1{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+        }
+        </style>
+    </head>
+    <body style="height: 2000px">
+        <div id="div1"></div>
+    </body>
+    <script>
+        window.onload=function(){
+            var div = document.getElementById("div1");
+            document.onmousemove=function(event){
+               
+                var disx = 0;
+                var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;   //当文档很长带有滚动条时，定位需要把可视区以外的高度都算进去
+                var scrollLeft = document.body.scrollLeft || document.documentElement.scrollLeft;                
+                div.style.left = scrollLeft+event.clientX + "px";    //clientX 为数字，必须加“px”
+                div.style.top = scrollTop+event.clientY +"px";
+            }
+        }
+    </script>
+</html>
