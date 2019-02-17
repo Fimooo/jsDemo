@@ -1,10 +1,11 @@
 # jsDemo
 some javascript demos
 
-# jsindex.html
+## jsindex.html
 是进入汇总了js各效果的文件入口
 
-# 包含内容如下：
+# 包含Demo内容如下：
+
 点击返回页面顶部 
 
 Div的多样变化（变宽、变高、字体变大、边框变粗） 
@@ -34,3 +35,5 @@ div的运动与停止
 点击表头进行重新排序 
 
 简易tabs的实现
+
+## 持续更新，欢迎大家指教!!!
