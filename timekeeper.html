@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>timekeeper</title>
+</head>
+<style type="text/css">
+
+	.flex{
+		height:100%;
+		display: flex;                                    
+		justify-content: center;
+		align-items:center;
+		flex-direction: row;
+	}
+	.flex-50{
+		flex: 0 0 50px;
+		align-self:center;
+		text-align: center;
+	}
+	div{
+		border: 1px solid black;
+	}
+</style>
+
+<script type="text/javascript">
+
+window.onload=function(){
+var i=0,j=1,k=0,l=0,m=0,n=0;	
+var h1 = document.getElementById("hour1");                //尝试1  麻烦
+var h2 = document.getElementById("hour2");
+var m1 = document.getElementById("min1");
+var m2 = document.getElementById("min2");
+var s1 = document.getElementById("sec1");
+var s2 = document.getElementById("sec2");
+
+var ci = document.querySelectorAll(".flex")[0]			//flex布局
+var Dtime = ci.querySelectorAll("div")                  //难点：用原生js取指定div下的所有div并进行操作
+
+function add(n){
+	if(n<10){
+		return '0'+n;
+	}else{
+		return ''+n;
+	}
+}
+
+function time () {
+
+	var time = new Date();                             //新：Date() 方法可返回当天的日期和时间。
+	var str = add(time.getHours())+add(time.getMinutes())+add(time.getSeconds());
+	for(var i = 0; i < str.length; i++){
+		Dtime[i].innerHTML = str[i];
+	}
+	console.log(time.getMonth());
+}
+
+setInterval(time,1000);
+
+}
+
+</script>
+
+<body>
+
+		<div class="flex">
+			<div id="hour1" class="flex-50">0</div>
+			<div id="hour2" class="flex-50">0</div>
+			<span>：</span>
+			<div id="min1"  class="flex-50">0</div>
+			<div id="min2"  class="flex-50">0</div>
+			<span>：</span>
+			<div id="sec1"  class="flex-50">0</div>
+			<div id="sec2"  class="flex-50">0</div>
+		</div>
+		<div class="flex">1
+		</div>
+
+<!-- 	<div id="a">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+	</div>
+	<div id="b">
+		<div>1</div>
+	</div>
+	<div>
+		<div>1</div>
+	</div> -->
+
+
+</body>
+</html>

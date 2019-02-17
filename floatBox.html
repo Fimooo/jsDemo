@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>floatBox</title>
+</head>
+
+<style type="text/css">
+	body,html{
+		height:100% 
+	}
+	#box{
+		display: flex;
+		align-items: center;  
+		height:100%;           /*以上两个属性实现屏幕垂直居中*/
+		justify-content: center;
+		border: 1px black solid;
+	}
+	#qq{
+		border: 1px solid #ccc;
+		flex: 0 0 100px;
+		margin: 20px;
+	}
+	#content{
+		border: 1px solid #ccc;
+		margin: 20px;
+				flex: 0 0 100px;
+		display: none;
+	}
+</style>
+
+<script type="text/javascript">
+	
+	var time = null;
+window.onload=function(){
+
+	var qq = document.getElementById("qq");
+	var content = document.getElementById("content");
+	qq.onmouseover=content.onmouseover=function(){
+		clearTimeout(time);
+		content.style.display = 'block';
+	}
+	qq.onmouseout=content.onmouseout=function(){
+		time=setTimeout(function(){
+			content.style.display = 'none';
+		},500)
+	}
+	// content.onmouseover=function(){
+	// 	console.log(123);
+	// }
+	// content.onmouseout=function(){
+	// 	time=setTimeout(function(){
+	// 		content.style.display = 'none';
+	// 	},1000)
+	// }
+}
+
+</script>
+
+<body>
+	<div id="box">
+		<div id="qq">111</div>
+		<div id="content">22</div>
+	</div>
+</body>
+</html>

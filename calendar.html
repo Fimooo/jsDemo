@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>calendar</title>
+</head>
+
+
+<style type="text/css">
+div1{
+	border: 1px solid black;
+	display: inline-block;
+}	
+div2{
+	border: 1px solid red;
+	display: none;
+}	
+
+.show1{
+	background-color: pink;
+}
+
+.show{
+	display: block;
+}
+
+</style>
+
+<script type="text/javascript">
+	
+	window.onload = function(){
+		var a = document.getElementsByTagName("div1");
+		var b = document.getElementsByTagName("div2");
+
+		for(var i = 0; i < a.length ; i++){
+			a[i].onmouseover=function(){
+				for(var i = 0; i < a.length ; i++){
+					a[i].index = i;
+					a[i].className = '';
+					b[i].className = '';
+				}
+				this.className = 'show1';
+				b[this.index].className = 'show';
+				// console.log(this.index);
+			}
+			a[i].onmouseout=function(){
+				this.className = '';
+			}
+		}
+
+	}
+
+</script>
+
+<body>
+
+	<div1>1月</div1>
+	<div1>2月</div1>
+	<div1>3月</div1>
+	<div1>4月</div1>
+	<div1>5月</div1>
+	<div1>6月</div1>
+	<div1>7月</div1>
+	<div1>8月</div1>
+	<div1>9月</div1>
+	<div1>10月</div1>
+	<div1>11月</div1>
+	<div1>12月</div1>
+
+	<div2>1月的风</div2>
+	<div2>2月的风</div2>
+	<div2>3月的风</div2>
+	<div2>4月的风</div2>
+	<div2>5月的风</div2>
+	<div2>6月的风</div2>
+	<div2>7月的风</div2>
+	<div2>8月的风</div2>
+	<div2>9月的风</div2>
+	<div2>10月的风</div2>
+	<div2>11月的风</div2>
+	<div2>12月的风</div2>
+
+
+</body>
+</html>

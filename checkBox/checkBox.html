@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<script type="text/javascript">
+	window.onload=function () {
+
+		var b = document.getElementById("all");
+		var c = document.getElementById("none");
+		var d = document.getElementById("turn");
+		var a = document.getElementsByTagName("input");
+
+		console.log(a);
+		
+		b.onclick=function(){
+			for(var i = 0; i < a.length ; i++){
+				a[i].checked=true;
+			}
+		}
+		c.onclick=function(){
+			for(var i = 0; i < a.length ; i++){
+				a[i].checked=false;
+			}
+		}
+		d.onclick=function(){
+			for(var i = 0; i < a.length ; i++){
+				if(a[i].checked==false){
+					a[i].checked=true;
+				}else{
+					a[i].checked=false;
+				}
+				
+			}
+		}
+	}
+</script>
+
+<body>
+	<button id="all">全选</button>
+	<button id="none">重置</button>
+	<button id="turn">反选</button>
+
+	<input type="checkbox" name="checkbox">
+	<input type="checkbox" name="checkbox">
+	<input type="checkbox" name="checkbox">
+	<input type="checkbox" name="checkbox">
+	<input type="checkbox" name="checkbox">
+	<input type="checkbox" name="checkbox">
+	<input type="checkbox" name="checkbox">
+	<input type="checkbox" name="checkbox">
+	<input type="checkbox" name="checkbox">
+	<input type="checkbox" name="checkbox">
+
+</body>
+</html>
